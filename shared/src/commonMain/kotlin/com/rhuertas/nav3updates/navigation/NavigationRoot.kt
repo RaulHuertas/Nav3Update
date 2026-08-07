@@ -49,7 +49,11 @@ fun NavigationRoot(
                     NavEntry(
                         key=key,
                     ){
-                        NodeListScreenUI()
+                        NodeListScreenUI(
+                            onNoteClick = {noteId ->
+                                backStack.add(NoteDetailScreen(noteId))
+                            }
+                        )
                     }
                 }
                 is NoteDetailScreen -> {
