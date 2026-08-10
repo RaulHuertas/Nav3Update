@@ -12,13 +12,17 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.foundation.lazy.items
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-
+import nav3updates.shared.generated.resources.Res
+import nav3updates.shared.generated.resources.app_name
+import nav3updates.shared.generated.resources.app_title
+import org.jetbrains.compose.resources.stringResource
 
 @Composable
 fun NodeListScreenUI(
     modifier : Modifier = Modifier,
     onNoteClick : (String) -> Unit
     ) {
+
     LazyColumn(
         modifier = modifier.fillMaxSize(),
     ) {

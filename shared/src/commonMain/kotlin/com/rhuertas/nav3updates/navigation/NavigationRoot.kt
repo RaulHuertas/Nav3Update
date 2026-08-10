@@ -1,5 +1,6 @@
 package com.rhuertas.nav3updates.navigation
 
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.lifecycle.viewmodel.navigation3.rememberViewModelStoreNavEntryDecorator
@@ -16,6 +17,8 @@ import androidx.savedstate.SavedStateRegistryOwner
 import androidx.savedstate.compose.LocalSavedStateRegistryOwner
 import kotlinx.serialization.modules.SerializersModule
 import kotlinx.serialization.modules.polymorphic
+import nav3updates.shared.generated.resources.Res
+import nav3updates.shared.generated.resources.app_name
 
 @Serializable
 data object NoteListScreen : NavKey
@@ -36,6 +39,7 @@ fun NavigationRoot(
     modifier : Modifier = Modifier,
 ) {
     val backStack = rememberNavBackStack(configuration=config, NoteListScreen)
+
     NavDisplay(
         backStack = backStack,
         entryDecorators = listOf(
