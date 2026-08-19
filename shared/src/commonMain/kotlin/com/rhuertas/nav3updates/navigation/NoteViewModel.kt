@@ -16,16 +16,18 @@ class NoteViewModel : ViewModel() {
     val notes = sampleNotes
 
     fun onScroll(index: Int) {
-        _scrollIndex.value = index
-    }
-
-    fun selectNote(noteId: String) {
-        _selectedNote.value = noteById(noteId)
+        if(_scrollIndex.value!=index){
+            _scrollIndex.value = index
+        }
     }
 
     fun noteById(noteId: String): Note {
         return notes.first { it.id == noteId }
     }
+    fun selectNote(noteId: String) {
+        _selectedNote.value = noteById(noteId)
+    }
+
 }
 
 val NoteModule = module {
