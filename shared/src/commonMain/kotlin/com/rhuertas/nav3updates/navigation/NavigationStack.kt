@@ -34,6 +34,7 @@ internal fun noteEntryProvider(
                 key = key,
             ) {
                 NodeListScreenUI(
+                    viewModel = koinViewModel(),
                     onNoteClick = onNoteClick,
                 )
             }

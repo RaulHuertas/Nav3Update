@@ -16,4 +16,5 @@ class NoteDetailViewModel(
 
 val NoteModule = module {
     viewModelOf(::NoteDetailViewModel)
+    viewModelOf(::NoteListViewModel)
 }
