@@ -1,7 +1,10 @@
 package com.rhuertas.nav3updates.navigation
 
+import androidx.compose.material3.adaptive.currentWindowAdaptiveInfoV2
 import androidx.navigation3.runtime.NavEntry
 import androidx.navigation3.runtime.NavKey
+import androidx.navigation3.runtime.metadata
+import androidx.navigation3.scene.DialogSceneStrategy
 import androidx.savedstate.serialization.SavedStateConfiguration
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.modules.SerializersModule
@@ -31,6 +34,7 @@ internal fun noteEntryProvider(
         is NoteListScreen -> {
             NavEntry<NavKey>(
                 key = key,
+                metadata = TwoPaneScene.twoPane()
             ) {
                 NoteListScreenUI(
                     viewModel = viewModel,
@@ -45,6 +49,7 @@ internal fun noteEntryProvider(
         is NoteDetailScreen -> {
             NavEntry<NavKey>(
                 key = key,
+                metadata = TwoPaneScene.twoPane()
             ) {
                 NoteDetailScreenUI(
                     noteId = key.id,
