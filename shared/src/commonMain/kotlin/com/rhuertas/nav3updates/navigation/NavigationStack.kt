@@ -7,8 +7,6 @@ import kotlinx.serialization.Serializable
 import kotlinx.serialization.modules.SerializersModule
 import kotlinx.serialization.modules.polymorphic
 import kotlinx.serialization.modules.subclass
-import org.koin.compose.viewmodel.koinViewModel
-import org.koin.core.parameter.parametersOf
 
 @Serializable
 data object NoteListScreen : NavKey
@@ -26,6 +24,7 @@ internal val config = SavedStateConfiguration {
 }
 
 internal fun noteEntryProvider(
+    viewModel: NoteViewModel,
     onNoteClick: (String) -> Unit,
 ) = { key: NavKey ->
     when (key) {
@@ -33,9 +32,12 @@ internal fun noteEntryProvider(
             NavEntry<NavKey>(
                 key = key,
             ) {
-                NodeListScreenUI(
-                    viewModel = koinViewModel(),
-                    onNoteClick = onNoteClick,
+                NoteListScreenUI(
+                    viewModel = viewModel,
+                    onNoteClick = { noteId ->
+                        viewModel.selectNote(noteId)
+                        onNoteClick(noteId)
+                    },
                 )
             }
         }
@@ -45,9 +47,8 @@ internal fun noteEntryProvider(
                 key = key,
             ) {
                 NoteDetailScreenUI(
-                    viewModel = koinViewModel {
-                        parametersOf(key.id)
-                    }
+                    noteId = key.id,
+                    viewModel = viewModel,
                 )
             }
         }
