@@ -72,6 +72,7 @@ class TwoPaneSceneStrategy<T:Any> (
         if(!windowSizeClass.isWidthAtLeastBreakpoint(WIDTH_DP_MEDIUM_LOWER_BOUND)){
             return null
         }
+        if(entries.size<2)return null
         val lastTwoEntries = entries.takeLast(2)
         val hasTwoPaneKey = lastTwoEntries.all{
             it.metadata.containsKey(TWO_PANE_KEY) && it.metadata[TWO_PANE_KEY] == true

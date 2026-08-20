@@ -31,7 +31,9 @@ fun NavigationRoot(
         entryProvider = noteEntryProvider(
             viewModel = viewModel,
             onNoteClick = { noteId ->
-                backStack.add(NoteDetailScreen(noteId))
+                if(backStack.size<=1){
+                    backStack.add(NoteDetailScreen(noteId))
+                }
             },
 
         ),
