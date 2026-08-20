@@ -81,7 +81,8 @@ class TwoPaneSceneStrategy<T:Any> (
            val firstEntry = lastTwoEntries.first()
            val secondEntry = lastTwoEntries.last()
             TwoPaneScene(
-                key = TwoPaneScene.TWO_PANE_KEY,
+                //key = TwoPaneScene.TWO_PANE_KEY,
+                key = firstEntry.contentKey to secondEntry.contentKey,
                 previousEntries = entries.dropLast(1),
                 firstEntry = firstEntry,
                 secondEntry = secondEntry

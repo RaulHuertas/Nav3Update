@@ -18,29 +18,38 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
 @Composable
 fun NoteDetailScreenUI(
     modifier: Modifier = Modifier,
-    noteId: String,
+    //noteId: String,
     viewModel: NoteViewModel,
 ) {
-    LaunchedEffect(noteId) {
-        viewModel.selectNote(noteId)
-    }
+    //LaunchedEffect(noteId) {
+    //    viewModel.selectNote(noteId)
+    //}
 
     val selectedNote by viewModel.selectedNote.collectAsStateWithLifecycle()
-    val noteState = selectedNote?.takeIf { it.id == noteId } ?: viewModel.noteById(noteId)
-
+    //val noteState = selectedNote?.takeIf { it.id == noteId } ?: viewModel.noteById(noteId)
+    //val noteState = selectedNote.
+    if (selectedNote == null) {
+        Text(
+            text = "No note selected",
+            fontSize = 18.sp,
+            modifier = modifier.padding(16.dp)
+        )
+        return
+    }
+    val validNote = selectedNote ?: return
     Column(
         modifier = modifier
             .fillMaxSize()
-            .background(color = noteState.color)
+            .background(color = validNote.color)
             .padding(16.dp),
     ) {
         Text(
-            text = noteState.title,
+            text = validNote.title,
             fontSize = 26.sp,
         )
         Spacer(modifier = Modifier.height(16.dp))
         Text(
-            text = noteState.content,
+            text = validNote.content,
             fontSize = 18.sp,
         )
     }

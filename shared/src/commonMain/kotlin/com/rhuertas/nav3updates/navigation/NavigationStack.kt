@@ -52,7 +52,7 @@ internal fun noteEntryProvider(
                 metadata = TwoPaneScene.twoPane()
             ) {
                 NoteDetailScreenUI(
-                    noteId = key.id,
+                    //noteId = key.id,
                     viewModel = viewModel,
                 )
             }

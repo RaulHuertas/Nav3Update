@@ -33,6 +33,7 @@ fun NavigationRoot(
             onNoteClick = { noteId ->
                 backStack.add(NoteDetailScreen(noteId))
             },
+
         ),
     )
 }
